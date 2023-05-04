@@ -1,0 +1,125 @@
+
+body{
+  /* position: relative; */
+  display: block;
+  font-family: 'Quicksand', sans-serif;
+
+}
+.navbar{
+  position: absolute;
+  height: 75px;
+  width: 100%;
+  background-color: darkslategrey;
+  top: 0;
+}
+
+.App {
+  /* position: absolute; */
+  margin-left: 40px;
+  margin-top: 20px;
+}
+.contentstyle {
+  position: relative;
+  margin-top: 6em;
+  /* margin-left: 3.5em; */
+}
+.maincontent{
+  display: flex;
+  justify-content: space-evenly;
+
+}
+.Resumeform{
+  display: inline-block;
+  align-items: center;
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* border: 1px solid red; */
+  padding: 2em;
+  border-radius: 12px;
+}
+
+@media  only screen and (max-width:768px) {
+  .maincontent{
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+}
+.experienceblock{
+  margin-right:35px
+}
+.Resumebuilder{
+  /* border: 1px solid grey; */
+  display: inline-block;
+  align-items: center;
+  padding: 2em;
+}
+
+.themecss {
+  position: absolute;
+  /* background-color: rgb(13, 85, 240) */
+  
+  right: 1.2em;
+  top: 17px;
+}
+
+.themebutton{
+  display: inline-block;
+  padding: 8px;
+  font-size: 1em;
+  background: thistle;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  transition-duration: 0.4s;
+  z-index: 2;
+}
+.themebutton:hover{
+color:white;
+background-color: grey;
+cursor: pointer;
+}
+
+input{
+  margin-bottom: 14px;
+    display: inline-block;
+    height: 27px;
+    width: 300px;
+    border: 1px solid grey;
+    border-radius: 12px;
+    padding-left: 9px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* .imgstyle {
+    margin: 50px;
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    transform:scale(1, 1);
+    transition: 1s;
+  }
+
+    .imgstyle:hover {
+        transform:scale(1.2, 1.2);
+    } */
+
+
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
