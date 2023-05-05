@@ -1,59 +1,82 @@
-import React ,{useState}from 'react'
+import React, { useState } from 'react'
 import { useGlobalReducerContext } from '../context/ReferenceContext';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import EditIcon from '@mui/icons-material/BorderColorOutlined';
-
-
+import CloseIcon from '@mui/icons-material/Close';
+import EditItemIcon from '@mui/icons-material/Edit';
 
 const Experience = (props) => {
-    const [isdelete,setIsdelete] = useState(true)
+  const [isdelete, setIsdelete] = useState(true)
+  const [isedit, setIsedit] = useState(true)
 
-    const dispatch = useGlobalReducerContext();
+  const dispatch = useGlobalReducerContext();
 
-    if(props.data.length >= 5){
-      props.data.length = 5
+  if (props.data.length >= 5) {
+    props.data.length = 5
   }
 
-  function handleDeleteExperiencebtn(){
+  function handleDeleteExperiencebtn() {
+    setIsedit(true)
     setIsdelete(!isdelete)
   }
-  
-  function deleteExperienceitem(xidx){
+
+  function deleteExperienceitem(xidx) {
     // console.log(xidx)
- dispatch({
-    type:'DELETE_EXPERIENCE',
-    payload:xidx
-  })
+    dispatch({
+      type: 'DELETE_EXPERIENCE',
+      payload: xidx
+    })
   }
+
+  function handleEditExperience() {
+    setIsdelete(true)
+
+    setIsedit(!isedit)
+  }
+  function editExItem(xidx) {
+    dispatch({
+      type: 'EDIT_EXPERIENCE',
+      payload: xidx
+    })
+  }
+
   return (
     <>
-   <h3>Experience :
-   <span>
-   <IconButton  aria-label="delete" color="error" onClick={handleDeleteExperiencebtn}>
-        <DeleteIcon />
-      </IconButton>
-      </span>
-      <span>
-      <IconButton  aria-label="edit" color="primary" >
-        <EditIcon/>
-      </IconButton>
-      </span>
-   </h3>
-   <ul>
-    {props.data.map((items,index)=>
-    {
-        return(
-            <li key ={index}> company : {items.company} and role : {items.role} year : {items.year}
-            {isdelete ? '' :<span style={{color:'red',marginLeft:'2em'}}
-          onClick={()=>deleteExperienceitem(items.xid)}
-          >x</span>}
+      <h3>Experience :
+        <span>
+          <IconButton aria-label="delete" color="error" onClick={handleDeleteExperiencebtn}>
+            <DeleteIcon />
+          </IconButton>
+        </span>
+        <span>
+          <IconButton aria-label="edit" color="primary" onClick={handleEditExperience} >
+            <EditIcon />
+          </IconButton>
+        </span>
+      </h3>
+      <ul>
+        {props.data.map((items, index) => {
+          return (
+            <li key={index}> company : {items.company} and role : {items.role} year : {items.year}
+              {isdelete ? '' : <span style={{ marginLeft: '25px' }}>
+                <IconButton aria-label="deleteitem" sx={{ padding: "0" }} color="error" onClick={() => deleteExperienceitem(items.xid)}>
+                  <CloseIcon sx={{ fontSize: '17px' }} />
+                </IconButton>
+              </span>}
+              {isedit ? '' : <span style={{ marginLeft: '25px' }}>
+                <IconButton aria-label="deleteitem" size="small"
+                  sx={{ padding: "0" }} color="primary"
+                  onClick={() => editExItem(items.xid)}>
+                  <EditItemIcon sx={{ fontSize: '17px' }} />
+                </IconButton>
+              </span>}
             </li>
 
-        )
-    }
-    )}
-   </ul>
+          )
+        }
+        )}
+      </ul>
 
     </>
   )

@@ -3,12 +3,14 @@ import { useGlobalReducerContext } from '../context/ReferenceContext';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import EditIcon from '@mui/icons-material/BorderColorOutlined';
-
+import CloseIcon from '@mui/icons-material/Close';
+import EditItemIcon from '@mui/icons-material/Edit';
 
 
 const Interests = (props) => {
 
     const [isdelete,setIsdelete] = useState(true)
+    const [isedit, setIsedit] = useState(true)
 
     const dispatch = useGlobalReducerContext();
 
@@ -17,6 +19,7 @@ const Interests = (props) => {
     }
 
     function handleDeleteInterestbtn(){
+      setIsedit(true)
         setIsdelete(!isdelete)
       }
       
@@ -27,6 +30,19 @@ const Interests = (props) => {
         payload:iidx
       })
       }
+
+      function handleEditInterest(){
+        setIsdelete(true)
+      
+      setIsedit(!isedit)
+    }
+    function editInterestItem(iidx){
+      dispatch({
+        type:'EDIT_INTEREST',
+        payload:iidx
+      })
+    }
+
   return (
     <div>
         <h3>Interests :
@@ -36,7 +52,7 @@ const Interests = (props) => {
       </IconButton>
       </span>
       <span>
-      <IconButton  aria-label="edit" color="primary" >
+      <IconButton  aria-label="edit" color="primary" onClick={handleEditInterest}>
         <EditIcon/>
       </IconButton>
       </span>
@@ -45,9 +61,20 @@ const Interests = (props) => {
         { props.data.map((item,i) =>{
             return(
                 <li key ={i}>{item.interest}
-            {isdelete ? '' :<span style={{color:'red',marginLeft:'2em'}}
-          onClick={()=>deleteInterestitem(item.iid)}
-          >x</span>}</li>
+            {isdelete ? '' :<span style={{marginLeft: '25px'}}> 
+          <IconButton  aria-label="deleteitem" sx={{padding:"0"}} color="error" onClick={()=>deleteInterestitem(item.iid)}>
+          <CloseIcon sx={{fontSize: '17px'}} />
+        </IconButton>
+          </span>}
+
+          {isedit ? '' :<span style={{marginLeft: '25px'}}>
+             <IconButton  aria-label="deleteitem" size="small" 
+             sx={{padding:"0"}} color="primary"
+              onClick={()=>editInterestItem(item.iid)}>
+        <EditItemIcon  sx={{fontSize: '17px'}} />
+      </IconButton>
+          </span>}
+          </li>
             )
         })}
         </ul>

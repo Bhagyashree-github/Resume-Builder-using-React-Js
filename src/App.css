@@ -1,4 +1,6 @@
-
+*{
+  margin: 0;
+}
 body{
   /* position: relative; */
   display: block;
@@ -52,7 +54,17 @@ body{
   display: inline-block;
   align-items: center;
   padding: 2em;
+  position: relative;
 }
+.adresscss{
+  font-size: 0.9em;
+  margin-bottom: 7px;
+}
+/* .sociallinks{
+  font-size: 0.9em;
+  margin-bottom: 7px;
+  float: right;
+} */
 
 .themecss {
   position: absolute;
@@ -87,6 +99,9 @@ input{
     border: 1px solid grey;
     border-radius: 12px;
     padding-left: 9px
+}
+li{
+  line-height: 1.5rem;
 }
 
 
