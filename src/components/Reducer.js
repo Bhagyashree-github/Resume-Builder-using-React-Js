@@ -61,10 +61,14 @@ const reducer = (state,action) =>{
           interests:state.interests.filter(item => item.iid !== action.payload)
         }
 
-      case 'EDIT_SKILL':
+      case 'UPDATE_SKILL':
+        const newValues = [...state.skills]
+        const index = state.skills.findIndex(item =>item.id === action.payload.id)
+         newValues.splice(index,1,action.payload)
+        // console.log(newValues)        
         return{
           ...state,
-          
+          skills: newValues          
         }
   
       default:

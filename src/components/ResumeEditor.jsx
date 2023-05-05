@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import '../App.css'
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
@@ -22,8 +22,19 @@ const initialState = {
   }
 }
 
-const ResumeEditor = ({ dispatch }) => {
+const ResumeEditor = ({ dispatch,skilledit }) => {
   const [addedvalue, setAddedvalue] = useState(initialState)
+
+  useEffect(()=>{
+    console.log(skilledit)
+    if(skilledit){
+      console.log(skilledit)
+      setAddedvalue({
+        ...addedvalue,
+        skills: skilledit})
+    }
+    
+  },[skilledit])
 
   const handleEducation = (e) => {
     setAddedvalue({
@@ -61,7 +72,17 @@ const ResumeEditor = ({ dispatch }) => {
   }
 
   const handleSkillClick = () => {
-    if (addedvalue.skills.skill.length > 0) {
+    if (addedvalue.skills.skill.length > 0 && skilledit) {
+      dispatch({
+        type:'UPDATE_SKILL',
+        payload: {
+          id:skilledit.id,
+          skill:addedvalue.skills.skill
+        }
+      })
+      skilledit = null
+    }
+    else   {
       dispatch({
         type: "ADD_SKILL",
         payload: addedvalue.skills.skill
@@ -80,6 +101,10 @@ const ResumeEditor = ({ dispatch }) => {
 
     setAddedvalue(initialState)
   }
+
+  // edit section--------------------------
+
+
 
   function handleInterestClick() {
     if (addedvalue.interests.interest.length > 0) {
@@ -105,7 +130,7 @@ const ResumeEditor = ({ dispatch }) => {
 
   return (
     <>
-      <h2 style={{display:'grid' ,justifyContent:'center', color:'rgb(6 130 237)'}}>Resume Editor</h2>
+      <h2 style={{display:'grid' ,justifyContent:'center',marginBottom:"13px", color:'rgb(6 130 237)'}}>Resume Editor</h2>
       <div>
         <TextField
           id="filled-search"
@@ -118,7 +143,7 @@ const ResumeEditor = ({ dispatch }) => {
         <Button variant="contained"
           sx={{ m: 2.5 }}
           endIcon={<AddIcon />}
-          onClick={handleSkillClick}> Add</Button>
+          onClick={handleSkillClick}>Add</Button>
       </div>
       <div>
         <TextField

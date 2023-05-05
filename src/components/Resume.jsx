@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import Skills from './Skills'
 import Education from './Education'
 import Experience from './Experience'
@@ -18,11 +18,14 @@ import CardContent from '@mui/material/CardContent';
 const Resume = () => {
 
   const [newState, dispatch] = useReducer(reducer, resumeData)
-
+  const [skilledit, setskillEdit] = useState(null)
   const { experience, education, skills, interests } = newState
 
+function updateSkill(editskill){
+  setskillEdit(editskill)
+  const index = skills.findIndex(item =>item.id === editskill.id)
+}
 
-  // 'contentstyle '
   return (
     <>
       <ReferenceContext.Provider value={dispatch} >
@@ -33,19 +36,25 @@ const Resume = () => {
             <div className='Resumeform'>
               <Card sx={{ minWidth: 300, maxWidth: 400 }}>
                 <CardContent>
-                  <ResumeEditor dispatch={dispatch} />
+                  <ResumeEditor dispatch={dispatch} skilledit={skilledit} />
                 </CardContent>
               </Card>
             </div>
 
             <div className='Resumebuilder'>
-              <Card sx={{ minWidth: 350, maxWidth: 500 }}>
+              <Card sx={{ minWidth: 330, maxWidth: 500 }}>
                 <CardContent>
-                  <h2 style={{ display: 'grid', justifyContent: 'center' }}>Resume Builder</h2>
-                  <h3>Bhagyashree Sahoo</h3>
+                  <h1 style={{ display: 'grid', margin:"6px", paddingBottom:'10px' }}>Bhagyashree Sahoo</h1>
+                  <div className="adresscss">
+                    <p>Address :</p>
+                    <p>City - xxxxxxxxxx</p>
+                    <p>Country - India</p>
+                    <p>Mob no - xxxxxxxxx</p>
+                  </div>
+                  
                   <hr />
 
-                  {skills.length > 0 ? <Skills data={skills} /> : null}
+                  {skills.length > 0 ? <Skills data={skills} updateSkill={updateSkill}/> : null}
                   {education.length > 0 ? <Education data={education} /> : null}
                   {experience.length > 0 ? <Experience data={experience} /> : null}
                   {interests.length > 0 ? <Interests data={interests} /> : null}
