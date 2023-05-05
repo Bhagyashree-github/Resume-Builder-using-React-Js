@@ -1,0 +1,20 @@
+body{
+position: relative;
+}
+.side-order {
+    height:100%;
+    width:50px;
+    margin-left: 5px;
+    background-color: aquamarine;
+    z-index: -1;
+    position: absolute;
+}
+.top-border {
+    height: 50px;
+    width: 100%;
+    margin-top: 5px;
+    background-color: rgb(247, 162, 211);
+    position: absolute;
+    top:2px;
+    
+}
