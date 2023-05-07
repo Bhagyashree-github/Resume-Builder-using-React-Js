@@ -1,32 +1,36 @@
-*{
+* {
   margin: 0;
 }
-body{
+
+body {
   /* position: relative; */
   display: block;
   font-family: 'Quicksand', sans-serif;
   background-color: var(--bg-clr);
 
 }
+
 .dark-theme {
   --main-heading: rgb(160, 184, 252);
   --list-color: rgb(196, 197, 199);
-  --list-heading-color:blueviolate;
+  --list-heading-color: blueviolate;
   --bg-clr: #050d1a;
-  --input-border-bottom : 2px solid darkgrey;
-  --input-bg :rgb(51, 53, 53);
-  --nav-header:rgb(51, 53, 53);
+  --input-border-bottom: 2px solid darkgrey;
+  --input-bg: rgb(51, 53, 53);
+  --nav-header: rgb(51, 53, 53);
   --card-border: 1px solid grey;
 }
-.light-theme{
+
+.light-theme {
   --nav-header: rgb(7, 76, 226);
+  --input-bg: rgb(247, 240, 240);
   --main-heading: black;
   --list-color: black;
-  --list-heading-color:black;
+  --list-heading-color: black;
   --bg-clr: white;
 }
 
-.navbar{
+.navbar {
   position: absolute;
   height: 75px;
   width: 100%;
@@ -39,17 +43,20 @@ body{
   margin-left: 40px;
   margin-top: 20px;
 }
+
 .contentstyle {
   position: relative;
   margin-top: 6em;
   /* margin-left: 3.5em; */
 }
-.maincontent{
+
+.maincontent {
   display: flex;
   justify-content: space-evenly;
 
 }
-.Resumeform{
+
+.Resumeform {
   display: inline-block;
   align-items: center;
   /* flex-direction: column; */
@@ -59,27 +66,31 @@ body{
   border-radius: 12px;
 }
 
-@media  only screen and (max-width:768px) {
-  .maincontent{
+@media only screen and (max-width:768px) {
+  .maincontent {
     align-items: center;
     flex-direction: column-reverse;
   }
 }
-.experienceblock{
-  margin-right:35px
+
+.experienceblock {
+  margin-right: 35px
 }
-.Resumebuilder{
+
+.Resumebuilder {
   /* border: 1px solid grey; */
   display: inline-block;
   align-items: center;
   padding: 2em;
   position: relative;
 }
-.adresscss{
+
+.adresscss {
   font-size: 0.9em;
   margin-bottom: 7px;
-  color:var(--list-color) ;
+  color: var(--list-color);
 }
+
 /* .sociallinks{
   font-size: 0.9em;
   margin-bottom: 7px;
@@ -89,12 +100,12 @@ body{
 .themecss {
   position: absolute;
   /* background-color: rgb(13, 85, 240) */
-  
+
   right: 1.2em;
   top: 17px;
 }
 
-.themebutton{
+.themebutton {
   display: inline-block;
   padding: 8px;
   font-size: 1em;
@@ -105,53 +116,56 @@ body{
   transition-duration: 0.4s;
   z-index: 2;
 }
-.themebutton:hover{
-color:white;
-background-color: grey;
-cursor: pointer;
+
+.themebutton:hover {
+  color: white;
+  background-color: grey;
+  cursor: pointer;
 }
 
-input{
+input {
   margin-bottom: 14px;
-    display: inline-block;
-    height: 27px;
-    width: 300px;
-    border: 1px solid grey;
-    border-radius: 12px;
-    padding-left: 9px
+  display: inline-block;
+  height: 27px;
+  width: 300px;
+  border: 1px solid grey;
+  border-radius: 12px;
+  padding-left: 9px
 }
-li{
+
+li {
   line-height: 1.5rem;
 }
 
-.resumeHeading{
+.resumeHeading {
   display: grid;
   margin: 6px;
   padding-bottom: 10px;
-  color: var( --main-heading);
+  color: var(--main-heading);
 }
 
-.listHeading{
-  color: var( --list-color);
+.listHeading {
+  color: var(--list-color);
 }
-.cardbg{
+
+.cardbg {
   background-color: var(--bg-clr);
   border: var(--card-border);
   border-radius: 5px;
 
 }
 
-.textFieldlabel{
-  color:var(--list-color) ;
+.textFieldlabel {
+  color: var(--list-color);
 }
- 
-#filled-search{
+
+#filled-search {
   background-color: var(--input-bg);
-  color: white;
+  color: var(--list-color);
   border-bottom: var(--input-border-bottom);
 }
 
- #filled-search-label{
+#filled-search-label {
   color: var(--list-color);
 }
 
@@ -163,7 +177,7 @@ li{
 
 
 
-  /* .imgstyle {
+/* .imgstyle {
     margin: 50px;
     display: inline-block;
     width: 300px;
