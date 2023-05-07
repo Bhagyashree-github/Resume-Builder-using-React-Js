@@ -19,11 +19,17 @@ const Resume = () => {
 
   const [newState, dispatch] = useReducer(reducer, resumeData)
   const [skilledit, setskillEdit] = useState(null)
+  const [educationedit, seteducationEdit] = useState(null)
   const { experience, education, skills, interests } = newState
 
 function updateSkill(editskill){
   setskillEdit(editskill)
-  const index = skills.findIndex(item =>item.id === editskill.id)
+  // const index = skills.findIndex(item =>item.id === editskill.id)
+}
+
+function updateEducation(editEducation){
+  seteducationEdit(editEducation)
+  // const index = skills.findIndex(item =>item.eid === editEducation.eid)
 }
 
   return (
@@ -36,7 +42,7 @@ function updateSkill(editskill){
             <div className='Resumeform'>
               <Card sx={{ minWidth: 300, maxWidth: 400 }}>
                 <CardContent>
-                  <ResumeEditor dispatch={dispatch} skilledit={skilledit} />
+                  <ResumeEditor dispatch={dispatch} skilledit={skilledit} educationedit={educationedit} />
                 </CardContent>
               </Card>
             </div>
@@ -55,7 +61,7 @@ function updateSkill(editskill){
                   <hr />
 
                   {skills.length > 0 ? <Skills data={skills} updateSkill={updateSkill}/> : null}
-                  {education.length > 0 ? <Education data={education} /> : null}
+                  {education.length > 0 ? <Education data={education} updateEducation ={updateEducation} /> : null}
                   {experience.length > 0 ? <Experience data={experience} /> : null}
                   {interests.length > 0 ? <Interests data={interests} /> : null}
                   <PrintButton />

@@ -22,19 +22,31 @@ const initialState = {
   }
 }
 
-const ResumeEditor = ({ dispatch,skilledit }) => {
+const ResumeEditor = ({ dispatch,skilledit,educationedit }) => {
   const [addedvalue, setAddedvalue] = useState(initialState)
-
+  // const [updateskill,setUpdateSkill] = useState(skilledit)
   useEffect(()=>{
     console.log(skilledit)
     if(skilledit){
-      console.log(skilledit)
+      // console.log(skilledit)
       setAddedvalue({
         ...addedvalue,
         skills: skilledit})
     }
     
   },[skilledit])
+
+  useEffect(()=>{
+    console.log(educationedit)
+    if(educationedit){
+      console.log(educationedit)
+      setAddedvalue({
+        ...addedvalue,
+       education : educationedit})
+    }
+    
+  },[educationedit])
+  
 
   const handleEducation = (e) => {
     setAddedvalue({
@@ -72,31 +84,48 @@ const ResumeEditor = ({ dispatch,skilledit }) => {
   }
 
   const handleSkillClick = () => {
-    if (addedvalue.skills.skill.length > 0 && skilledit) {
-      dispatch({
-        type:'UPDATE_SKILL',
-        payload: {
-          id:skilledit.id,
-          skill:addedvalue.skills.skill
-        }
-      })
-      skilledit = null
+    if (addedvalue.skills.skill.length > 0 ) {
+      if(skilledit){
+        dispatch({
+          type:'UPDATE_SKILL',
+          payload: {
+            id:skilledit.id,
+            skill:addedvalue.skills.skill
+          }
+        })
+        skilledit = null
+        console.log(skilledit)
+      }
+      else   {
+        dispatch({
+          type: "ADD_SKILL",
+          payload: addedvalue.skills.skill
+        })
+        
+      }
     }
-    else   {
-      dispatch({
-        type: "ADD_SKILL",
-        payload: addedvalue.skills.skill
-      })
-    }
+    
     setAddedvalue(initialState)//you should write initialstate here as it is a controlled form
   }
 
   function handleEducationClick() {
     if (addedvalue.education.institute.length > 0) {
-      dispatch({
-        type: "ADD_EDUCATION",
-        payload: addedvalue.education.institute
-      })
+      if(educationedit){
+        dispatch({
+          type:'UPDATE_EDUCATION',
+          payload: {
+            eid:educationedit.eid,
+            institute:addedvalue.education.institute
+          }
+        })
+        educationedit = null
+      }
+      else{
+        dispatch({
+          type: "ADD_EDUCATION",
+          payload: addedvalue.education.institute
+        })
+      }
     }
 
     setAddedvalue(initialState)

@@ -7,7 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import EditItemIcon from '@mui/icons-material/Edit';
 
 
-const Education = ({data}) => {
+const Education = ({data,updateEducation}) => {
   const [isdelete, setIsdelete] = useState(true)
   const [isedit, setIsedit] = useState(true)
 
@@ -33,14 +33,15 @@ dispatch({
 
 function handleEditEducation(){
   setIsdelete(true)
-
-setIsedit(!isedit)
+  setIsedit(!isedit)
 }
 function editEItem(eidx){
-dispatch({
-  type:'EDIT_INSTITUTE',
-  payload:eidx
-})
+  const editableitem = data.find(item => item.eid === eidx)
+updateEducation(editableitem)
+// dispatch({
+//   type:'EDIT_INSTITUTE',
+//   payload:eidx
+// })
 }
   return (
     <div>
