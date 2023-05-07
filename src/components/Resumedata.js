@@ -41,9 +41,7 @@ const resumeData = {
     {
         id: '1',
         skill:'node-js'
-    },
-    
-    
+    },    
 ],
     interests: [
         {

@@ -7,71 +7,68 @@ import CloseIcon from '@mui/icons-material/Close';
 import EditItemIcon from '@mui/icons-material/Edit';
 
 const Skills = (props) => {
-const [isdelete, setIsdelete] = useState(true)
-const [isedit, setIsedit] = useState(true)
+  const [isdelete, setIsdelete] = useState(true)
+  const [isedit, setIsedit] = useState(true)
 
-const dispatch = useGlobalReducerContext();
+  const dispatch = useGlobalReducerContext();
 
-  if(props.data.length >= 10){
+  if (props.data.length >= 10) {
     props.data.length = 10
-}
-function handleDeleteskillbtn(){
-  setIsedit(true)
-  setIsdelete(!isdelete)
-}
-function deleteItem(idx){
-  // console.log(idx)
-dispatch({
-  type:'DELETE_SKILL',
-  payload:idx
-})
-}
+  }
+  function handleDeleteskillbtn() {
+    setIsedit(true)
+    setIsdelete(!isdelete)
+  }
+  function deleteItem(idx) {
+    dispatch({
+      type: 'DELETE_SKILL',
+      payload: idx
+    })
+  }
 
-function handleEditSkill(){
+  function handleEditSkill() {
     setIsdelete(true)
-  
-  setIsedit(!isedit)
-}
-function editItem(ide){
-const editableitem = props.data.find(item => item.id === ide)
-props.updateSkill(editableitem)
-  // dispatch({
-  //   type:'EDIT_SKILL',
-  //   payload:ide
-  // })
-}
+
+    setIsedit(!isedit)
+  }
+  function editItem(ide) {
+    const editableitem = props.data.find(item => item.id === ide)
+    props.updateSkill(editableitem)
+  }
   return (
     <div>
-      <h3>Skills: 
-      <span>
-      <IconButton  aria-label="delete" color="error" onClick={handleDeleteskillbtn}>
-        <DeleteIcon />
-      </IconButton>
-      </span>
-      <span>
-      <IconButton  aria-label="edit" color="primary" onClick={handleEditSkill} >
-        <EditIcon/>
-      </IconButton>
-      </span>
-      
-       </h3>
+      <h3>Skills:
+        <span>
+          <IconButton aria-label="delete" color="error" onClick={handleDeleteskillbtn}>
+            <DeleteIcon />
+          </IconButton>
+        </span>
+        <span>
+          <IconButton aria-label="edit" color="primary" onClick={handleEditSkill} >
+            <EditIcon />
+          </IconButton>
+        </span>
+
+      </h3>
       <ul>
-        {props.data.map((item,index) => {return(
-          <li key={index}>{item.skill}
-          {isdelete ? '' :<span style={{marginLeft: '25px'}}>
-            <IconButton  aria-label="deleteitem" sx={{padding:"0"}} color="error" onClick={()=>deleteItem(item.id)}>
-        <CloseIcon sx={{fontSize: '17px'}} />
-      </IconButton>
-          </span>}
-          {isedit ? '' :<span style={{marginLeft: '25px'}}>
-             <IconButton  aria-label="deleteitem" size="small" 
-             sx={{padding:"0"}} color="primary"
-              onClick={()=>editItem(item.id)}>
-        <EditItemIcon  sx={{fontSize: '17px'}} />
-      </IconButton>
-          </span>}
-          </li>
-        )})}
+        {props.data.map((item, index) => {
+          return (
+            <li key={index}>{item.skill}
+              {isdelete ? '' : <span style={{ marginLeft: '25px' }}>
+                <IconButton aria-label="deleteitem" sx={{ padding: "0" }} color="error" onClick={() => deleteItem(item.id)}>
+                  <CloseIcon sx={{ fontSize: '17px' }} />
+                </IconButton>
+              </span>}
+              {isedit ? '' : <span style={{ marginLeft: '25px' }}>
+                <IconButton aria-label="deleteitem" size="small"
+                  sx={{ padding: "0" }} color="primary"
+                  onClick={() => editItem(item.id)}>
+                  <EditItemIcon sx={{ fontSize: '17px' }} />
+                </IconButton>
+              </span>}
+            </li>
+          )
+        })}
       </ul>
     </div>
   )
