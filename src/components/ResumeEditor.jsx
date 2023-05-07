@@ -22,7 +22,7 @@ const initialState = {
   }
 }
 
-const ResumeEditor = ({ dispatch,skilledit,educationedit }) => {
+const ResumeEditor = ({ dispatch,skilledit,educationedit,interestedit }) => {
   const [addedvalue, setAddedvalue] = useState(initialState)
   // const [updateskill,setUpdateSkill] = useState(skilledit)
   useEffect(()=>{
@@ -46,6 +46,17 @@ const ResumeEditor = ({ dispatch,skilledit,educationedit }) => {
     }
     
   },[educationedit])
+
+  useEffect(()=>{
+    console.log(interestedit)
+    if(interestedit){
+      console.log(interestedit)
+      setAddedvalue({
+        ...addedvalue,
+        interests : interestedit})
+    }
+    
+  },[interestedit])
   
 
   const handleEducation = (e) => {
@@ -131,16 +142,25 @@ const ResumeEditor = ({ dispatch,skilledit,educationedit }) => {
     setAddedvalue(initialState)
   }
 
-  // edit section--------------------------
-
-
 
   function handleInterestClick() {
     if (addedvalue.interests.interest.length > 0) {
-      dispatch({
-        type: "ADD_INTEREST",
-        payload: addedvalue.interests.interest
-      })
+      if(interestedit){
+        dispatch({
+          type:'UPDATE_INTEREST',
+          payload: {
+            iid:interestedit.iid,
+            interest:addedvalue.interests.interest
+          }
+        })
+        interestedit = null
+      }
+      else{
+        dispatch({
+          type: "ADD_INTEREST",
+          payload: addedvalue.interests.interest
+        })
+      }
     }
 
     setAddedvalue(initialState)

@@ -20,6 +20,7 @@ const Resume = () => {
   const [newState, dispatch] = useReducer(reducer, resumeData)
   const [skilledit, setskillEdit] = useState(null)
   const [educationedit, seteducationEdit] = useState(null)
+  const [interestedit, setinterestEdit] = useState(null)
   const { experience, education, skills, interests } = newState
 
 function updateSkill(editskill){
@@ -32,6 +33,10 @@ function updateEducation(editEducation){
   // const index = skills.findIndex(item =>item.eid === editEducation.eid)
 }
 
+function updateInterest(editInterest){
+  setinterestEdit(editInterest)
+}
+
   return (
     <>
       <ReferenceContext.Provider value={dispatch} >
@@ -42,7 +47,7 @@ function updateEducation(editEducation){
             <div className='Resumeform'>
               <Card sx={{ minWidth: 300, maxWidth: 400 }}>
                 <CardContent>
-                  <ResumeEditor dispatch={dispatch} skilledit={skilledit} educationedit={educationedit} />
+                  <ResumeEditor dispatch={dispatch} skilledit={skilledit} educationedit={educationedit} interestedit={interestedit}/>
                 </CardContent>
               </Card>
             </div>
@@ -63,7 +68,7 @@ function updateEducation(editEducation){
                   {skills.length > 0 ? <Skills data={skills} updateSkill={updateSkill}/> : null}
                   {education.length > 0 ? <Education data={education} updateEducation ={updateEducation} /> : null}
                   {experience.length > 0 ? <Experience data={experience} /> : null}
-                  {interests.length > 0 ? <Interests data={interests} /> : null}
+                  {interests.length > 0 ? <Interests data={interests} updateInterest={updateInterest} /> : null}
                   <PrintButton />
                 </CardContent>
               </Card>

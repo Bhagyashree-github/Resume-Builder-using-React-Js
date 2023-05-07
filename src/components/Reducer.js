@@ -81,6 +81,15 @@ const reducer = (state, action) => {
         ...state,
         education: newInstitute
       }
+    case 'UPDATE_INTEREST':
+      const newInterest = [...state.interests]
+      const interestindex = state.interests.findIndex(item => item.iid === action.payload.iid)
+      newInterest.splice(interestindex, 1, action.payload)
+      console.log(newInterest)        
+      return {
+        ...state,
+        interests: newInterest
+      }
 
     default:
       return state;

@@ -37,10 +37,9 @@ const Interests = (props) => {
       setIsedit(!isedit)
     }
     function editInterestItem(iidx){
-      dispatch({
-        type:'EDIT_INTEREST',
-        payload:iidx
-      })
+      const editableitem = props.data.find(item => item.iid === iidx)
+      console.log(editableitem)
+      props.updateInterest(editableitem)
     }
 
   return (
