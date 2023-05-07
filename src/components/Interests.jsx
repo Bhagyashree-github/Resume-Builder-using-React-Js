@@ -44,7 +44,7 @@ const Interests = (props) => {
 
   return (
     <div>
-        <h3>Interests :
+        <h3 className='listHeading'>Interests :
         <span>
         <IconButton  aria-label="delete" color="error" onClick={handleDeleteInterestbtn}>
         <DeleteIcon />
@@ -59,7 +59,7 @@ const Interests = (props) => {
         <ul>
         { props.data.map((item,i) =>{
             return(
-                <li key ={i}>{item.interest}
+                <li className='listHeading' key ={i}>{item.interest}
             {isdelete ? '' :<span style={{marginLeft: '25px'}}> 
           <IconButton  aria-label="deleteitem" sx={{padding:"0"}} color="error" onClick={()=>deleteInterestitem(item.iid)}>
           <CloseIcon sx={{fontSize: '17px'}} />

@@ -37,7 +37,7 @@ const Skills = (props) => {
   }
   return (
     <div>
-      <h3>Skills:
+      <h3 className="listHeading">Skills:
         <span>
           <IconButton aria-label="delete" color="error" onClick={handleDeleteskillbtn}>
             <DeleteIcon />
@@ -53,7 +53,7 @@ const Skills = (props) => {
       <ul>
         {props.data.map((item, index) => {
           return (
-            <li key={index}>{item.skill}
+            <li className='listHeading' key={index}>{item.skill}
               {isdelete ? '' : <span style={{ marginLeft: '25px' }}>
                 <IconButton aria-label="deleteitem" sx={{ padding: "0" }} color="error" onClick={() => deleteItem(item.id)}>
                   <CloseIcon sx={{ fontSize: '17px' }} />

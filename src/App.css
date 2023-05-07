@@ -5,13 +5,32 @@ body{
   /* position: relative; */
   display: block;
   font-family: 'Quicksand', sans-serif;
+  background-color: var(--bg-clr);
 
 }
+.dark-theme {
+  --main-heading: rgb(160, 184, 252);
+  --list-color: rgb(196, 197, 199);
+  --list-heading-color:blueviolate;
+  --bg-clr: #050d1a;
+  --input-border-bottom : 2px solid darkgrey;
+  --input-bg :rgb(51, 53, 53);
+  --nav-header:rgb(51, 53, 53);
+  --card-border: 1px solid grey;
+}
+.light-theme{
+  --nav-header: rgb(7, 76, 226);
+  --main-heading: black;
+  --list-color: black;
+  --list-heading-color:black;
+  --bg-clr: white;
+}
+
 .navbar{
   position: absolute;
   height: 75px;
   width: 100%;
-  background-color: darkslategrey;
+  background-color: var(--nav-header);
   top: 0;
 }
 
@@ -59,6 +78,7 @@ body{
 .adresscss{
   font-size: 0.9em;
   margin-bottom: 7px;
+  color:var(--list-color) ;
 }
 /* .sociallinks{
   font-size: 0.9em;
@@ -104,9 +124,36 @@ li{
   line-height: 1.5rem;
 }
 
+.resumeHeading{
+  display: grid;
+  margin: 6px;
+  padding-bottom: 10px;
+  color: var( --main-heading);
+}
 
+.listHeading{
+  color: var( --list-color);
+}
+.cardbg{
+  background-color: var(--bg-clr);
+  border: var(--card-border);
+  border-radius: 5px;
 
+}
 
+.textFieldlabel{
+  color:var(--list-color) ;
+}
+ 
+#filled-search{
+  background-color: var(--input-bg);
+  color: white;
+  border-bottom: var(--input-border-bottom);
+}
+
+ #filled-search-label{
+  color: var(--list-color);
+}
 
 
 

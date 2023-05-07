@@ -47,8 +47,8 @@ const Resume = () => {
 
           <div className="maincontent">
             <div className='Resumeform'>
-              <Card sx={{ minWidth: 300, maxWidth: 400 }}>
-                <CardContent>
+              <Card  sx={{ minWidth: 300, maxWidth: 400 }}>
+                <CardContent className ='cardbg'>
                   <ResumeEditor
                     dispatch={dispatch}
                     skilledit={skilledit}
@@ -61,9 +61,10 @@ const Resume = () => {
             </div>
 
             <div className='Resumebuilder'>
-              <Card sx={{ minWidth: 330, maxWidth: 500 }}>
-                <CardContent>
-                  <h1 style={{ display: 'grid', margin: "6px", paddingBottom: '10px' }}>Bhagyashree Sahoo</h1>
+              <Card  sx={{ minWidth: 330, maxWidth: 500 }}>
+                <CardContent className ='cardbg'>
+                  <h1 className= 'resumeHeading'
+                   style={{ display: 'grid', margin: "6px", paddingBottom: '10px' }}>Bhagyashree Sahoo</h1>
                   <div className="adresscss">
                     <p>Address :</p>
                     <p>City - xxxxxxxxxx</p>

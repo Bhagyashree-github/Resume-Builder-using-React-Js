@@ -45,7 +45,7 @@ updateEducation(editableitem)
 }
   return (
     <div>
-        <h3>Education :
+        <h3 className='listHeading'>Education :
         
 <span>
       <IconButton  aria-label="delete" color="error" onClick={handleDeleteeducationbtn}>
@@ -61,7 +61,7 @@ updateEducation(editableitem)
         </h3>
         <ul>
         {data.map((item,index) =>{ return(
-          <li key={index}>{item.institute}
+          <li className='listHeading' key={index}>{item.institute}
            {isdelete ? '' :<span style={{marginLeft: '25px'}}>
              <IconButton  aria-label="deleteitem" sx={{padding:"0"}} color="error" onClick={()=>deleteEitem(item.eid)}>
                 <CloseIcon sx={{fontSize: '17px'}} />

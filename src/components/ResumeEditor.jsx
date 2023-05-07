@@ -199,9 +199,10 @@ const ResumeEditor = ({ dispatch, skilledit, educationedit, interestedit, experi
 
   return (
     <>
-      <h2 style={{ display: 'grid', justifyContent: 'center', marginBottom: "13px", color: 'rgb(6 130 237)' }}>Resume Editor</h2>
+      <h2  style={{ display: 'grid', justifyContent: 'center', marginBottom: "13px", color: 'rgb(6 130 237)' }}>Resume Editor</h2>
       <div>
         <TextField
+          className = "textFieldlabel"
           id="filled-search"
           label="Add Skill"
           type="search"
@@ -216,6 +217,7 @@ const ResumeEditor = ({ dispatch, skilledit, educationedit, interestedit, experi
       </div>
       <div>
         <TextField
+        className = "textFieldlabel"
           id="filled-search"
           label="Add Education"
           type="search"
@@ -232,6 +234,7 @@ const ResumeEditor = ({ dispatch, skilledit, educationedit, interestedit, experi
       <div className='experienceblock'>
         <div>
           <TextField
+          className = "textFieldlabel"
             id="filled-search"
             label="Add year"
             type="search"
@@ -243,6 +246,7 @@ const ResumeEditor = ({ dispatch, skilledit, educationedit, interestedit, experi
         </div>
         <div>
           <TextField
+          className = "textFieldlabel"
             id="filled-search"
             label="Previous Company Name"
             type="search"
@@ -255,6 +259,7 @@ const ResumeEditor = ({ dispatch, skilledit, educationedit, interestedit, experi
       </div>
       <div>
         <TextField
+        className = "textFieldlabel"
           id="filled-search"
           label="Add Role"
           type="search"
@@ -272,6 +277,7 @@ const ResumeEditor = ({ dispatch, skilledit, educationedit, interestedit, experi
 
       <div>
         <TextField
+        className = "textFieldlabel"
           id="filled-search"
           label="Add Interest"
           type="search"

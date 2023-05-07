@@ -39,7 +39,7 @@ const Experience = (props) => {
 
   return (
     <>
-      <h3>Experience :
+      <h3 className='listHeading'>Experience :
         <span>
           <IconButton aria-label="delete" color="error" onClick={handleDeleteExperiencebtn}>
             <DeleteIcon />
@@ -54,7 +54,7 @@ const Experience = (props) => {
       <ul>
         {props.data.map((items, index) => {
           return (
-            <li key={index}> company : {items.company} and role : {items.role} year : {items.year}
+            <li className='listHeading' key={index}> company : {items.company} and role : {items.role} year : {items.year}
               {isdelete ? '' : <span style={{ marginLeft: '25px' }}>
                 <IconButton aria-label="deleteitem" sx={{ padding: "0" }} color="error" onClick={() => deleteExperienceitem(items.xid)}>
                   <CloseIcon sx={{ fontSize: '17px' }} />
