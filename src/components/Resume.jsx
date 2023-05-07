@@ -9,9 +9,7 @@ import PrintButton from './PrintButton'
 import ResumeEditor from './ResumeEditor'
 import reducer from './Reducer'
 import { ReferenceContext } from '../context/ReferenceContext'
-// import ThemeContext from '../context/ThemeContext'
 import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
 
@@ -21,21 +19,25 @@ const Resume = () => {
   const [skilledit, setskillEdit] = useState(null)
   const [educationedit, seteducationEdit] = useState(null)
   const [interestedit, setinterestEdit] = useState(null)
+  const [experienceedit, setexperiencEdit] = useState(null)
+
   const { experience, education, skills, interests } = newState
 
-function updateSkill(editskill){
-  setskillEdit(editskill)
-  // const index = skills.findIndex(item =>item.id === editskill.id)
-}
+  function updateSkill(editskill) {
+    setskillEdit(editskill)
+  }
 
-function updateEducation(editEducation){
-  seteducationEdit(editEducation)
-  // const index = skills.findIndex(item =>item.eid === editEducation.eid)
-}
+  function updateEducation(editEducation) {
+    seteducationEdit(editEducation)
+  }
 
-function updateInterest(editInterest){
-  setinterestEdit(editInterest)
-}
+  function updateExperience(editExperience) {
+    setexperiencEdit(editExperience)
+  }
+
+  function updateInterest(editInterest) {
+    setinterestEdit(editInterest)
+  }
 
   return (
     <>
@@ -47,7 +49,13 @@ function updateInterest(editInterest){
             <div className='Resumeform'>
               <Card sx={{ minWidth: 300, maxWidth: 400 }}>
                 <CardContent>
-                  <ResumeEditor dispatch={dispatch} skilledit={skilledit} educationedit={educationedit} interestedit={interestedit}/>
+                  <ResumeEditor
+                    dispatch={dispatch}
+                    skilledit={skilledit}
+                    educationedit={educationedit}
+                    experienceedit={experienceedit}
+                    interestedit={interestedit}
+                  />
                 </CardContent>
               </Card>
             </div>
@@ -55,19 +63,19 @@ function updateInterest(editInterest){
             <div className='Resumebuilder'>
               <Card sx={{ minWidth: 330, maxWidth: 500 }}>
                 <CardContent>
-                  <h1 style={{ display: 'grid', margin:"6px", paddingBottom:'10px' }}>Bhagyashree Sahoo</h1>
+                  <h1 style={{ display: 'grid', margin: "6px", paddingBottom: '10px' }}>Bhagyashree Sahoo</h1>
                   <div className="adresscss">
                     <p>Address :</p>
                     <p>City - xxxxxxxxxx</p>
                     <p>Country - India</p>
                     <p>Mob no - xxxxxxxxx</p>
                   </div>
-                  
+
                   <hr />
 
-                  {skills.length > 0 ? <Skills data={skills} updateSkill={updateSkill}/> : null}
-                  {education.length > 0 ? <Education data={education} updateEducation ={updateEducation} /> : null}
-                  {experience.length > 0 ? <Experience data={experience} /> : null}
+                  {skills.length > 0 ? <Skills data={skills} updateSkill={updateSkill} /> : null}
+                  {education.length > 0 ? <Education data={education} updateEducation={updateEducation} /> : null}
+                  {experience.length > 0 ? <Experience data={experience} updateExperience={updateExperience} /> : null}
                   {interests.length > 0 ? <Interests data={interests} updateInterest={updateInterest} /> : null}
                   <PrintButton />
                 </CardContent>

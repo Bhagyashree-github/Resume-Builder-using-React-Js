@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import '../App.css'
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
@@ -22,42 +22,47 @@ const initialState = {
   }
 }
 
-const ResumeEditor = ({ dispatch,skilledit,educationedit,interestedit }) => {
+const ResumeEditor = ({ dispatch, skilledit, educationedit, interestedit, experienceedit }) => {
   const [addedvalue, setAddedvalue] = useState(initialState)
-  // const [updateskill,setUpdateSkill] = useState(skilledit)
-  useEffect(()=>{
-    console.log(skilledit)
-    if(skilledit){
-      // console.log(skilledit)
+  useEffect(() => {
+    if (skilledit) {
       setAddedvalue({
         ...addedvalue,
-        skills: skilledit})
+        skills: skilledit
+      })
     }
-    
-  },[skilledit])
+  }, [skilledit])
 
-  useEffect(()=>{
-    console.log(educationedit)
-    if(educationedit){
-      console.log(educationedit)
+  useEffect(() => {
+    if (educationedit) {
       setAddedvalue({
         ...addedvalue,
-       education : educationedit})
+        education: educationedit
+      })
     }
-    
-  },[educationedit])
 
-  useEffect(()=>{
-    console.log(interestedit)
-    if(interestedit){
-      console.log(interestedit)
+  }, [educationedit])
+
+  useEffect(() => {
+    if (experienceedit) {
       setAddedvalue({
         ...addedvalue,
-        interests : interestedit})
+        experience: experienceedit
+      })
     }
-    
-  },[interestedit])
-  
+
+  }, [experienceedit])
+
+  useEffect(() => {
+    if (interestedit) {
+      setAddedvalue({
+        ...addedvalue,
+        interests: interestedit
+      })
+    }
+
+  }, [interestedit])
+
 
   const handleEducation = (e) => {
     setAddedvalue({
@@ -95,43 +100,43 @@ const ResumeEditor = ({ dispatch,skilledit,educationedit,interestedit }) => {
   }
 
   const handleSkillClick = () => {
-    if (addedvalue.skills.skill.length > 0 ) {
-      if(skilledit){
+    if (addedvalue.skills.skill.length > 0) {
+      if (skilledit) {
         dispatch({
-          type:'UPDATE_SKILL',
+          type: 'UPDATE_SKILL',
           payload: {
-            id:skilledit.id,
-            skill:addedvalue.skills.skill
+            id: skilledit.id,
+            skill: addedvalue.skills.skill
           }
         })
         skilledit = null
         console.log(skilledit)
       }
-      else   {
+      else {
         dispatch({
           type: "ADD_SKILL",
           payload: addedvalue.skills.skill
         })
-        
+
       }
     }
-    
-    setAddedvalue(initialState)//you should write initialstate here as it is a controlled form
+
+    setAddedvalue(initialState) //you should write initialstate here as it is a controlled form
   }
 
   function handleEducationClick() {
     if (addedvalue.education.institute.length > 0) {
-      if(educationedit){
+      if (educationedit) {
         dispatch({
-          type:'UPDATE_EDUCATION',
+          type: 'UPDATE_EDUCATION',
           payload: {
-            eid:educationedit.eid,
-            institute:addedvalue.education.institute
+            eid: educationedit.eid,
+            institute: addedvalue.education.institute
           }
         })
         educationedit = null
       }
-      else{
+      else {
         dispatch({
           type: "ADD_EDUCATION",
           payload: addedvalue.education.institute
@@ -145,17 +150,17 @@ const ResumeEditor = ({ dispatch,skilledit,educationedit,interestedit }) => {
 
   function handleInterestClick() {
     if (addedvalue.interests.interest.length > 0) {
-      if(interestedit){
+      if (interestedit) {
         dispatch({
-          type:'UPDATE_INTEREST',
+          type: 'UPDATE_INTEREST',
           payload: {
-            iid:interestedit.iid,
-            interest:addedvalue.interests.interest
+            iid: interestedit.iid,
+            interest: addedvalue.interests.interest
           }
         })
         interestedit = null
       }
-      else{
+      else {
         dispatch({
           type: "ADD_INTEREST",
           payload: addedvalue.interests.interest
@@ -165,12 +170,27 @@ const ResumeEditor = ({ dispatch,skilledit,educationedit,interestedit }) => {
 
     setAddedvalue(initialState)
   }
+
   function handleExperienceClick() {
-    if (addedvalue.experience.length > 0) {
-      dispatch({
-        type: "ADD_EXPERIENCE",
-        payload: addedvalue.experience
-      })
+    if (addedvalue.experience.company.length && addedvalue.experience.role.length && addedvalue.experience.year.length) {
+      if (experienceedit) {
+        dispatch({
+          type: "UPDATE_EXPERIENCE",
+          payload: {
+            xid: experienceedit.xid,
+            year: addedvalue.experience.year,
+            company: addedvalue.experience.company,
+            role: addedvalue.experience.role,
+          }
+        })
+        experienceedit = null
+      }
+      else {
+        dispatch({
+          type: "ADD_EXPERIENCE",
+          payload: addedvalue.experience
+        })
+      }
     }
 
     setAddedvalue(initialState)
@@ -179,7 +199,7 @@ const ResumeEditor = ({ dispatch,skilledit,educationedit,interestedit }) => {
 
   return (
     <>
-      <h2 style={{display:'grid' ,justifyContent:'center',marginBottom:"13px", color:'rgb(6 130 237)'}}>Resume Editor</h2>
+      <h2 style={{ display: 'grid', justifyContent: 'center', marginBottom: "13px", color: 'rgb(6 130 237)' }}>Resume Editor</h2>
       <div>
         <TextField
           id="filled-search"

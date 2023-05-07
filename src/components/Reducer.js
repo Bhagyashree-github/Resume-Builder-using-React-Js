@@ -1,5 +1,6 @@
 const reducer = (state, action) => {
   switch (action.type) {
+
     case 'ADD_SKILL':
       console.log(action.payload)
       return {
@@ -66,26 +67,33 @@ const reducer = (state, action) => {
       const newValues = [...state.skills]
       const index = state.skills.findIndex(item => item.id === action.payload.id)
       newValues.splice(index, 1, action.payload)
-      // console.log(newValues)        
       return {
         ...state,
         skills: newValues
       }
 
-      case 'UPDATE_EDUCATION':
+    case 'UPDATE_EDUCATION':
       const newInstitute = [...state.education]
       const eduindex = state.education.findIndex(item => item.eid === action.payload.eid)
       newInstitute.splice(eduindex, 1, action.payload)
-      console.log(eduindex)        
       return {
         ...state,
         education: newInstitute
       }
+
+    case 'UPDATE_EXPERIENCE':
+      const newExperience = [...state.experience]
+      const experienceindex = state.experience.findIndex(item => item.xid === action.payload.xid)
+      newExperience.splice(experienceindex, 1, action.payload)
+      return {
+        ...state,
+        experience: newExperience
+      }
+
     case 'UPDATE_INTEREST':
       const newInterest = [...state.interests]
       const interestindex = state.interests.findIndex(item => item.iid === action.payload.iid)
       newInterest.splice(interestindex, 1, action.payload)
-      console.log(newInterest)        
       return {
         ...state,
         interests: newInterest

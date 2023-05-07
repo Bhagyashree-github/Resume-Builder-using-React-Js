@@ -22,7 +22,6 @@ const Experience = (props) => {
   }
 
   function deleteExperienceitem(xidx) {
-    // console.log(xidx)
     dispatch({
       type: 'DELETE_EXPERIENCE',
       payload: xidx
@@ -31,14 +30,11 @@ const Experience = (props) => {
 
   function handleEditExperience() {
     setIsdelete(true)
-
     setIsedit(!isedit)
   }
   function editExItem(xidx) {
-    dispatch({
-      type: 'EDIT_EXPERIENCE',
-      payload: xidx
-    })
+    const editableitem = props.data.find(item => item.xid === xidx)
+    props.updateExperience(editableitem)
   }
 
   return (
